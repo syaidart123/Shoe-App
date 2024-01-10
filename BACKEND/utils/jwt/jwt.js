@@ -16,7 +16,7 @@ const verify = (token) => {
   return jwt.verify(token, JWT_SECRET);
 };
 const generateToken = (id, email, role) => {
-  return jwt.sign({ id, email, role }, JWT_SECRET, { expiresIn: 60 });
+  return jwt.sign({ id, email, role }, JWT_SECRET, { expiresIn: 36000 });
 };
 
 export { compare, encryptPassword, verify, generateToken };

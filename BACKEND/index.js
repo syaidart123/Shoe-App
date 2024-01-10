@@ -13,6 +13,7 @@ import CartController from "./controller/cart.js";
 import cartRoutes from "./routes/cart.js";
 import CartService from "./service/cart.js";
 import CartRepository from "./repository/repo/cart.js";
+import fileUpload from "express-fileupload";
 
 const app = express();
 const routes = express.Router();
@@ -20,6 +21,8 @@ connection();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(fileUpload());
 
 const repoProduct = new ProductRepo();
 const svcProduct = new ProductService(repoProduct);

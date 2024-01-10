@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 class ProductController {
   constructor(svc) {
     this.svc = svc;
@@ -16,7 +17,7 @@ class ProductController {
 
   addProduct = async (req, res, next) => {
     try {
-      const data = await this.svc.addProduct(req.body);
+      const data = await this.svc.addProduct(req.body, req.files, req.protocol);
       res.status(201).json({
         data: data,
       });
@@ -28,7 +29,12 @@ class ProductController {
   updateProduct = async (req, res, next) => {
     try {
       const { id } = req.params;
-      const updated = await this.svc.updateProduct(req.body, id);
+      const updated = await this.svc.updateProduct(
+        req.body,
+        id,
+        req.files,
+        req.protocol
+      );
       res.status(200).json({
         data: updated,
       });

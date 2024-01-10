@@ -9,6 +9,8 @@ const productSchema = Joi.object({
       Joi.string().valid("35", "36", "37", "38", "39", "40", "41", "42", "43")
     )
     .required(),
+  image: Joi.string(),
+  url: Joi.string(),
 });
 
 export default productSchema;

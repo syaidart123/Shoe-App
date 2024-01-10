@@ -18,6 +18,12 @@ const schemaProduct = new mongoose.Schema({
       enum: ["35", "36", "37", "38", "39", "40", "41", "42", "43"],
     },
   ],
+  image: {
+    type: String,
+  },
+  url: {
+    type: String,
+  },
 });
 
 const Product = new mongoose.model("Product", schemaProduct);
