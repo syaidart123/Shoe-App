@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 class ProductController {
   constructor(svc) {
     this.svc = svc;

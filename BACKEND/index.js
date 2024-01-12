@@ -24,6 +24,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(fileUpload());
 
+app.use((_, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With, Content-type, Authorization, Cache-control"
+  );
+  next();
+});
+
 const repoProduct = new ProductRepo();
 const svcProduct = new ProductService(repoProduct);
 const conProduct = new ProductController(svcProduct);
